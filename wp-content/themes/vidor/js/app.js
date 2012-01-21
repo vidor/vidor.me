@@ -16,22 +16,7 @@ jQuery(document).ready(function($) {
         $(this).find('.entry-overlay').animate({'top':'-119px'});
     });
     /************************************************
-    *     single image gallery hover
+    *     single image gallery
     *************************************************/
-    
-    sleep2 = 0;
-    $('body.single').on('mouseenter', '.entry-gallery-image', function() {
-        that = this, sleep2 = 1;
-        setTimeout(function() {
-            if( sleep2 ) $(that).find('.entry-gallery-image-title').animate({'bottom': '0px'});
-        }, 300);
-        
-    });
-    $('body.single').on('mouseleave', '.entry-gallery-image', function() {
-        sleep2 = 0;
-        $(this).find('.entry-gallery-image-title').animate({'bottom': '-119px'});
-    }); 
 
 });
-
-
