@@ -20,7 +20,15 @@
 
 <!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/css3-mediaqueries.js"></script>
-<?php wp_head();?>
+
+<?php 
+ wp_enqueue_script(
+ 	array('jquery'),
+ 	'1.0',
+ 	true
+ );
+ 
+wp_head();?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/app.js"></script>
 </head>
 
@@ -31,19 +39,17 @@
 			<hgroup class="row">
 				<h1 id="site-title" class="threecol"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="首页" rel="home"><span><?php bloginfo( 'name' ); ?></span></a></h1>
                 <?php if( is_singular() ) : ?>
-                    <h2 id="title" class="ninecol last"><?php the_title()?></h2>
+                <div id="single-title" class="ninecol last">
+                    <h2 id="title"><?php the_title()?></h2>
                 	<div class="entry-meta">
-            			<div class="entry-date"><?php the_time('F j, Y'); ?></div>
-                        
+            			<div class="entry-date"><?php the_time('n-j, Y'); ?></div>
             			<div class="entry-foto-count"><?php $images =& get_children('post_type=attachment&post_mime_type=image&post_parent=' . $post->ID );echo count($images);?></div>
             			<div class="entry-comment-count"> <?php comments_number( '0', '1', '%' ); ?></div>
-            		</div><!-- #entry-meta -->                    
+            		</div><!-- #entry-meta -->  
+                </div>
                 <?php else : ?>
 				    <h2 id="site-description" class="ninecol last"><?php bloginfo( 'description' ); ?></h2>
                 <?php endif; ?>
 			</hgroup>
 
 	</header><!-- #branding -->
-
-
-	<div id="main" class="container">

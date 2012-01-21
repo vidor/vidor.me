@@ -43,6 +43,15 @@ function vidor_setup() {
 	update_option( 'large_size_w', 0);
 	update_option( 'medium_size_h', 0);
 	update_option( 'medium_size_w', 0);
+    
+
+    function my_img_title_filter($attr) {
+        unset($attr['title']);
+        //unset($attr['alt']);
+    	return $attr;
+	}
+    add_filter( 'wp_get_attachment_image_attributes', 'my_img_title_filter' );
+    
 }
 
 function vidor_title() {

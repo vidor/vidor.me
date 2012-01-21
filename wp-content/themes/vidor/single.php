@@ -8,8 +8,8 @@
  */
 
 get_header(); ?>
-
-		<div id="primary" class="row">
+    <div id="main">
+		<div id="primary" class="">
 			<div id="content" role="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -18,8 +18,10 @@ get_header(); ?>
 					</nav><!-- #nav-single -->
 
 					<?php get_template_part( 'content', 'single' ); ?>
-
-					<?php comments_template( '', true ); ?>
+                    
+                    <div id="comment-container" class="container"><div class="row">
+					    <?php comments_template( '', true ); ?>
+                    </div></div>
 
 				<?php endwhile; // end of the loop. ?>
 
