@@ -210,16 +210,6 @@ header#branding h2 {
     text-decoration: none;
 }
 
-.home article header {
-    position: absolute;
-    z-index: 2;
-}
-
-.home article header h1 {
-    font-size: 14px;
-    padding: 5px;
-}
-
 .home article .entry-content {
     position: absolute;
     width: 100%;
@@ -234,11 +224,34 @@ header#branding h2 {
     border-radius: 3px;
 }
 
+.home article .entry-overlay {
+    position: absolute;
+    top: -119px;
+    width: 180px;
+    height: 119px;
+    z-index: 2;
+    border-radius: 3px;
+    background: url('images/overlay.png');
+}
+
+.home article header {
+    position: absolute;
+}
+
+.home article header h1 {
+    font-size: 20px;
+    padding: 5px;
+}
+
+
+
 .home article footer {
     position: absolute;
     width: 100%;
     bottom: 0;
-    z-index: 3;
+    font-family: verdana;
+    font-size: 12px;
+    padding: 5px;
 }
 
 .home article footer .entry-date {
@@ -266,8 +279,9 @@ header#branding h2 {
     display: block;
     width: 120px;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
     color: white;
     margin: 0 auto;
     text-decoration: none;
@@ -295,6 +309,8 @@ footer#colophon p a{
     color: white;
     text-decoration: none;
     border-bottom: 1px dotted white;
+    font-style: italic;
+    font-weight: bold;
 }
 
 /* ============================= */

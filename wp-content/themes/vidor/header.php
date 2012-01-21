@@ -20,8 +20,8 @@
 
 <!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/css3-mediaqueries.js"></script>
-
 <?php wp_head();?>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/app.js"></script>
 </head>
 
 <body <?php body_class(); ?>>

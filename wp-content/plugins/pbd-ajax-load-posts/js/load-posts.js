@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
 		if(pageNum <= max) {
 		
 			// Show that we're working.
-			$(this).text('Loading posts...');
+			$(this).text('正在加载...');
 			
 			$('.pbd-alp-placeholder-'+ pageNum).load(nextLink + ' .post',
 				function() {
