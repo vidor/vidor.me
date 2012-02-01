@@ -44,13 +44,25 @@ function vidor_setup() {
 	update_option( 'medium_size_h', 0);
 	update_option( 'medium_size_w', 0);
     
-
+    
+    /**************************************************
+    * remove image title
+    ***************************************************/
     function my_img_title_filter($attr) {
         unset($attr['title']);
         //unset($attr['alt']);
     	return $attr;
 	}
     add_filter( 'wp_get_attachment_image_attributes', 'my_img_title_filter' );
+    
+    /**************************************************
+    * remove more link anchor
+    ***************************************************/
+    function my_more_link( $more_link, $more_link_text ) {
+        return '...';
+    }    
+    
+    add_filter( 'the_content_more_link', 'my_more_link', 10, 2 );
     
 }
 

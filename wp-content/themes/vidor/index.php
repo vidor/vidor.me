@@ -25,10 +25,11 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); ?>
                     
                     <?php $n++;
-                        if( $n % $post_per_row == 0 ) get_template_part( 'content', 'last');
-                        else get_template_part( 'content', get_post_format() );
+                        if( $n % $post_per_row == 0 ) : ?>
+                            <?php get_template_part( 'content', 'last'); ?>
+                        <?php else : get_template_part( 'content', get_post_format() ); endif;?>
 
-				endwhile; ?>
+				<?php endwhile; ?>
 
 
 			<?php else : ?>

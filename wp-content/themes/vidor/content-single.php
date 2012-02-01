@@ -16,10 +16,13 @@
                 <?php $n++;?>
                 <div class="threecol <?php if($n % 4 == 0) echo 'last';?>">
                     <div class="entry-gallery-image">
-                        <img src="<?php echo array_shift(wp_get_attachment_image_src($image->ID, 'gallery'))?>" />
+                        <img class="<?php echo 'image-' . $image->ID; ?>" src="<?php echo array_shift(wp_get_attachment_image_src($image->ID, 'gallery'))?>" />
                         <div class="entry-gallery-image-title"><p><?php echo $image->post_title;?></p></div>
                     </div>
                 </div>
+                <?php if($n % 4 == 0) : ?>
+                    <div class="viewport"></div>
+                <?php endif;?>
                 <?php endforeach;?> 
             </div>
             </div>

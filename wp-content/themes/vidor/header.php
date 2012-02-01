@@ -9,6 +9,7 @@
 <title><?php vidor_title()?></title>
 	
 <link rel="profile" href="http://gmpg.org/xfn/11" />
+<link href="<?php echo esc_url( home_url( '/' ) ); ?>/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!-- 1140px Grid styles for IE -->

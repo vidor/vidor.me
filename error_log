@@ -23,3 +23,13 @@
 [21-Jan-2012 09:32:52] PHP Warning:  call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, ' kia_attachment_attributes' was given in /home5/vidorme/public_html/dev/wp-includes/plugin.php on line 170
 [21-Jan-2012 09:32:52] PHP Warning:  call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, ' kia_attachment_attributes' was given in /home5/vidorme/public_html/dev/wp-includes/plugin.php on line 170
 [21-Jan-2012 14:21:17] PHP Parse error:  syntax error, unexpected T_ENDFOREACH in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-single.php on line 25
+[21-Jan-2012 20:36:39] PHP Fatal error:  Call to undefined function  twentyeleven_content_nav() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/category.php on line 29
+[30-Jan-2012 08:57:36] PHP Parse error:  syntax error, unexpected T_STRING, expecting ':' in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 31
+[30-Jan-2012 08:57:58] PHP Parse error:  syntax error, unexpected T_ENDWHILE in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 33
+[30-Jan-2012 08:58:06] PHP Parse error:  syntax error, unexpected T_ENDWHILE in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 33
+[01-Feb-2012 05:45:48] PHP Fatal error:  Call to undefined function  add_filters() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/functions.php on line 68
+[01-Feb-2012 05:51:40] PHP Fatal error:  Call to undefined function  add_filters() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/functions.php on line 69
+[01-Feb-2012 05:51:41] PHP Fatal error:  Call to undefined function  add_filters() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/functions.php on line 69
+[01-Feb-2012 05:53:33] PHP Fatal error:  Call to undefined function  add_filters() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/functions.php on line 67
+[01-Feb-2012 05:57:24] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content.php on line 33
+[01-Feb-2012 05:57:27] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content.php on line 33

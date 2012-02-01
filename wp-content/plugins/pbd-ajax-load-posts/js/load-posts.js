@@ -34,14 +34,15 @@ jQuery(document).ready(function($) {
 			$('.pbd-alp-placeholder-'+ pageNum).load(nextLink + ' .post',
 				function() {
                     
-                    $(this).replaceWith($(this).html());
+                    //$(this).replaceWith($(this).html());
+                    $($(this).html()).hide().appendTo('#content').slideDown();
                     
 					// Update page number and nextLink.
 					pageNum++;
 					nextLink = nextLink.replace(/paged=[0-9]?/, 'paged='+ pageNum);
 					
 					// Add a new placeholder, for when user clicks again.
-						$('#primary').append('<div class="alp pbd-alp-placeholder-'+ pageNum +'"></div>')
+						$('#primary').append('<div style="display: none;" class="alp pbd-alp-placeholder-'+ pageNum +'"></div>')
 					
 					// Update the button message.
 					if(pageNum <= max) {
