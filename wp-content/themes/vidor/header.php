@@ -36,9 +36,9 @@ wp_head();?>
 <body <?php body_class(); ?>>
 
 <div id="page" class="hfeed">
-	<header id="branding" role="banner" class="container">
-			<hgroup class="row">
-				<h1 id="site-title" class="threecol"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="首页" rel="home"><span><?php bloginfo( 'name' ); ?></span></a></h1>
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="首页" rel="home"><span><?php bloginfo( 'name' ); ?></span></a></h1>
                 <?php if( is_singular() ) : ?>
                 <div id="single-title" class="ninecol last">
                     <h2 id="title"><?php the_title()?></h2>
@@ -49,7 +49,7 @@ wp_head();?>
             		</div><!-- #entry-meta -->  
                 </div>
                 <?php else : ?>
-				    <h2 id="site-description" class="ninecol last"><?php bloginfo( 'description' ); ?></h2>
+				    <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
                 <?php endif; ?>
 			</hgroup>
 
