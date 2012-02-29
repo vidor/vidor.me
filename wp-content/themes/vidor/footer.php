@@ -16,8 +16,8 @@
 
 </div><!-- #page -->
 
-<footer id="colophon" role="contentinfo" class="container">
-    <p class="row">Design By <a href="http://vidor.me">Vidor</a></p>
+<footer id="colophon" role="contentinfo" class="row">
+    <p>Designed By <a href="http://vidor.me">Vidor</a></p>
 </footer><!-- #colophon -->
 
 <?php wp_footer(); ?>

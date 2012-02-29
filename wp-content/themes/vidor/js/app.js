@@ -8,10 +8,12 @@ jQuery(document).ready(function($) {
 *************************************************/
 
     $('body.home').on('mouseenter', '.home article a.post-link', function() {
+    	if( $(document).width() > 480 )
         $(this).animate({'backgroundColor' : '#222', 'color' : '#d7d7d7'});
     });
     
     $('body.home').on('mouseleave', '.home article a.post-link', function() {
+        if( $(document).width() > 480 )
         $(this).stop().animate({'backgroundColor': '#f7f7f7', 'color' : '#333'});
     });
     

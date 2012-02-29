@@ -13,9 +13,8 @@
  */
 
 get_header(); ?>
-    <div id="main" class="container">
-		<div id="primary" class="">
-			<div id="content" role="main">
+    <div id="main" class="row">
+		<div id="primary" class="container">
 
 			<?php if ( have_posts() ) : ?>
             
@@ -32,27 +31,30 @@ get_header(); ?>
                 		<?php else : ?>
                         
                 		<div class="entry-thumbnail">
-                			<?php if ( has_post_thumbnail() ) { the_post_thumbnail(array('title' => "")); } ?>
+                			<?php if ( has_post_thumbnail() ) { //the_post_thumbnail(array('title' => "")); 
+                				$thumbnail = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ) , 'galleria') ;
+                			} ?>
+                			<img src="<?php echo $thumbnail[0]; ?>" />
                 		</div><!-- .entry-thumbnail -->
                 		<?php endif; ?>
                         
                         <div class="entry-content">
                         
-                        	<footer class="entry-meta">
+                        	<div class="entry-meta">
                     			<div class="entry-date"><?php the_time('n-j, Y'); ?></div>
                                 <div class="entry-count">
                         			<div class="entry-foto-count"><?php $images =& get_children('post_type=attachment&post_mime_type=image&post_parent=' . $post->ID ); echo count($images);?></div>
                         			<div class="entry-comment-count"> <?php comments_number( '0', '1', '%' ); ?></div>
                                 </div>
-                    		</footer><!-- #entry-meta -->
+                    		</div><!-- #entry-meta -->
                             
-                        	<header class="entry-header">
+                        	<div class="entry-header">
                     			<?php if ( is_sticky() ) : ?>
                     				<!-- todo -->
                     			<?php else : ?>
                     			<h1 class="entry-title"><?php the_title(); ?></h1>
                     			<?php endif; ?>
-                    		</header><!-- .entry-header -->
+                    		</div><!-- .entry-header -->
                             
                             <div class="entry-excerpt">
                                 <?php the_content('...');?>
@@ -72,9 +74,9 @@ get_header(); ?>
 			<?php else : ?>
 
 				<article id="post-0" class="post no-results not-found">
-					<header class="entry-header">
+					<div class="entry-header">
 						<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentyeleven' ); ?></h1>
-					</header><!-- .entry-header -->
+					</div><!-- .entry-header -->
 
 					<div class="entry-content">
 						<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyeleven' ); ?></p>
@@ -84,7 +86,6 @@ get_header(); ?>
 
 			<?php endif; ?>
 
-			</div><!-- #content -->
 		</div><!-- #primary -->
 
 <?php //get_sidebar(); ?>

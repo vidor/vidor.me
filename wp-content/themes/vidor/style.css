@@ -13,81 +13,77 @@ Tags: simple one
 
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%}
 
-/*******************************************************************
- =global
-********************************************************************/
+
+/**************************************************************************************************
+                                             =global
+***************************************************************************************************/
+
 body {
     background: #f7f7f7;
+    font-family: "Lucida Grande","Microsoft Yahei",Arial,Calibri,"Trebuchet MS",Helvetica,Hiragino,STHeiti,"Microsoft Jhenghei",sans-serif;
 }
 
-#page {
+.row {
+	/*padding: 60px 10px; */
+	padding: 60px 0;
 	
-}
-
-/*******************************************************************
- =header
-********************************************************************/
-
-header#branding {
-    overflow: hidden;
-	padding: 60px 10px;
 	border-bottom: 1px solid #d7d7d7;
-    border-top: 8px solid #52bae1;
+    border-top: 1px solid white;
+    overflow: hidden;
 }
 
-header#branding hgroup {
-    max-width: 900px;
-    margin: 0 auto;
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+    overflow: hidden;
 }
 
-h1#site-title {
+
+/**************************************************************************************************
+                                             =header
+***************************************************************************************************/
+
+header {
+    overflow: hidden;
+    border-top: 8px solid #52bae1 !important;
+}
+
+
+header h1#site-title {
+	margin-left: 30px;
     float: left;
 }
 
-h1#site-title a {
+header h1#site-title a {
 	display: block;
 	background: url('images/logo.png') no-repeat;
 	height: 98px;
 	width: 100px;
 }
 
-#site-title a:hover {
+header h1#site-title a:hover {
 	background-position: left bottom;
 }
 
-#site-title a span {
+header h1#site-title a span {
 	display: none;
 }
 
-header#branding h2#site-description {
-    margin-left: 60px;
+header h2#site-description {
+    margin-left: 10px;
+    margin-right: 30px;
     float: right;
 	color: #333;
 	font-style: italic;
     max-width: 630px;
 }
 
+/**************************************************************************************************
+                                             =article list
+***************************************************************************************************/
 
-
-
-
-
-/*******************************************************************
- =article
-********************************************************************/
-
-
-#main { 
-    border-top: 1px solid white;
-    border-bottom: 1px solid #d7d7d7;
-    padding-top: 60px;
-    padding-bottom: 30px;
-}
-
-
-#main.container {
-    padding-left: 0;
-    padding-right: 0;
+#main.row {
+    padding-bottom: 30px; /* for last row posts margin bottom */
 }
 
 #primary {
@@ -102,7 +98,10 @@ header#branding h2#site-description {
     position: relative;
     padding-bottom: 30px;
     float: left;
-    margin: 0 3%;
+    margin: 0 30px;
+    display: block;
+    width: 180px;
+    height: 260px;
     
 }
 
@@ -110,9 +109,10 @@ header#branding h2#site-description {
 
 .home article a.post-link {
     position: relative;
+    cursor: pointer;
     display: block;
-    width: 180px;
-    height: 260px;
+    width: 100%;
+    height: 100%;
     color: #333;
     text-decoration: none;
     overflow: hidden;
@@ -124,13 +124,13 @@ header#branding h2#site-description {
 
 
 .home article .entry-thumbnail {
-    width: 180px;
-    height: 119px;
 
 }
 
 .home article .entry-thumbnail img {
     border-radius: 3px;
+    width: 180px;
+    height: auto;
 }
 
 .home article .entry-content {
@@ -138,12 +138,7 @@ header#branding h2#site-description {
 }
 
 
-
-
-.home article .entry-content header {
-}
-
-.home article header h1 {
+.home article .entry-header h1 {
     font-size: 13px;
     padding: 5px 0;
     font-weight: bolder;
@@ -151,7 +146,7 @@ header#branding h2#site-description {
 
 
 
-.home article .entry-content footer {
+.home article .entry-content .entry-meta {
     width: 100%;
     bottom: 0;
     font-family: verdana;
@@ -160,26 +155,26 @@ header#branding h2#site-description {
     font-style: italic;
 }
 
-.home article .entry-content footer .entry-date {
+.home article .entry-content  .entry-date {
     float: left;
 }
 
-.home article .entry-content footer .entry-count {
+.home article .entry-content .entry-count {
     float: right;
 }
 
 
-.home article .entry-content footer .entry-count div {
+.home article .entry-content  .entry-count div {
     padding: 0 0 0 18px;
     margin-left: 8px;
     float: left;
 }
-.home article .entry-content footer .entry-count div.entry-foto-count,
-.home article .entry-content footer .entry-count div.entry-comment-count {
+.home article .entry-content  .entry-count div.entry-foto-count,
+.home article .entry-content  .entry-count div.entry-comment-count {
     background: url('images/entry-meta.png') left 2px no-repeat;
 }
 
-.home article .entry-content footer .entry-count div.entry-comment-count {
+.home article .entry-content  .entry-count div.entry-comment-count {
     background-position: left -17px;
 }
 
@@ -188,7 +183,9 @@ header#branding h2#site-description {
 }
 
 
-/* =========ajax load more posts ========= */
+/**************************************************************************************************
+                                             =ajax more posts
+***************************************************************************************************/
 
 #page #pbd-alp-load-posts {
     border-top: 1px solid white;
@@ -211,9 +208,9 @@ header#branding h2#site-description {
 
 
 
-/*******************************************************************
- =single
-********************************************************************/
+/**************************************************************************************************
+                                             =single post
+***************************************************************************************************/
 
 header#branding #single-title {
     height: 78px;
@@ -253,36 +250,16 @@ header#branding #single-title h2 {
 
 /*==========*/
 
-.single article .entry-content {
-    padding-bottom: 60px;
-    padding-left: 30px;
-    padding-right: 30px;
+
+.single .entry-content #entry-content-inner {
+	margin: 0 30px;
     font-size: 18px;
-    font-family: "Microsoft Yahei";
     line-height: 34px;
-    border-bottom: 1px solid #d7d7d7;
 }
 
-.single article .entry-content .entry-content-container {
-    width: 900px;
-    margin: 0 auto;
-}
 
-.single article .entry-gallery {
-    padding-top: 60px;
-    padding-bottom: 30px;
-    border-top: 1px solid white;
-    border-bottom: 1px solid #d7d7d7;
-    overflow: hidden;
-    
-}
-.single article .entry-gallery .entry-gallery-container {
-    width: 960px;
-    margin: 0 auto;
-    overflow: hidden;
-}
 
-.single article .entry-gallery .entry-gallery-image {
+.single article  .entry-gallery-image {
     position: relative;
     overflow: hidden;
     width: 180px;
@@ -294,13 +271,13 @@ header#branding #single-title h2 {
     float: left;
 }
 
-.single article .entry-gallery .entry-gallery-image img {
+.single article  .entry-gallery-image img {
     position: absolute;
     z-index: 1;
     border-radius: 3px;
 }
 
-.single article .entry-gallery .entry-gallery-image .entry-gallery-image-title {
+.single article .entry-gallery-image .entry-gallery-image-title {
     position: absolute;
     z-index: 2;
     text-align: center;
@@ -313,69 +290,66 @@ header#branding #single-title h2 {
     background: url('images/overlay.png');
 }
 
-.single article .entry-gallery .entry-gallery-image .entry-gallery-image-title p {
+.single article  .entry-gallery-image .entry-gallery-image-title p {
     padding: 5px;
 }
 
 
-/*******************************************************************
- =media query
-********************************************************************/
+/**************************************************************************************************
+                                             =meida query
+***************************************************************************************************/
 
 
-@media all and (max-width: 960px) and (min-width: 670px) {  /* 3 col */
-
-    .home h1#site-title {
-        float: none;
-    }
-    
-    .home h1#site-title a {
-        margin: 0 auto;
-    }
-    
-    .home header#branding h2#site-description {
-        float: none;
-        margin: 0 auto;
-        margin-top: 20px;
-    }
-    
-    
-    .home #primary,
-    .single article .entry-content .entry-content-container,
-    .single article .entry-gallery .entry-gallery-container {max-width: 670px;}
-    .single article .entry-gallery .entry-gallery-image {margin: 30px 2%}
+@media all and (max-width: 960px) {  /* 3 col */
+	header h2#site-description {font-size: 18px; width: 380px;}
+	.container {width: 720px;}
 }
 
-@media all and (max-width: 670px) and (min-width: 486px) {  /* 2 col */
-    .home #primary,
-    .single article .entry-content .entry-content-container {max-width: 490px;}
-    .single article .entry-gallery .entry-gallery-container {max-width: 490px;}
-    .home article,
-    .single article .entry-gallery .entry-gallery-image {margin: 0 6%; }
+@media all and (max-width: 720px)  {  /* 2 col */
+	header h1#site-title {float: none; margin: 0 auto; margin-bottom: 30px;}
+	header h1#site-title a {width: 100px; margin: 0 auto;}
+	header h2#site-description {float: none; width: 100%; margin: 0;}
+	.container {width: 560px}
+	.home article {margin: 0 50px;}
 }
 
-@media all and (max-width: 486px) {                        /* 1 col */
-    .home article {float: none; margin: 0 auto; width: 180px;}
+@media all and (max-width: 560px)  {  /* less margin */
+	.container {width: 480px;}
+	.home article {margin: 0 30px;}
 }
 
-
-
-
-.single #comment-container {
-    border-top: 1px solid white;
+@media all and (max-width: 480px) {                        /* 1 col */
+	.container {width: 100%;}
+	.home article {float: none; width: 100%; height: auto; margin: 0 30px 0 0;}
+	.home article .entry-thumbnail img {width: 100%; height: auto; border-radius: 0;}
+	.home article a.post-link {border-radius: 0; background: #333; color: #d7d7d7;}
+	.home article .entry-content .entry-excerpt {display: none;}
+	.home article .entry-header {position: absolute; top: 5px; left: 5px; color: #333; text-shadow: 0 0 2px white; }
+	.home article .entry-header h1 {font-size: 18px;}
+	
 }
 
-.single #comment-container .comment-inner {
-    width: 900px;
-    margin: 0 auto;
+@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+
+/*	.logo {
+		background: url(logo2x.jpg) no-repeat;
+		background-size: 212px 303px;
+	}*/
+
 }
 
 
-/*============footer==============*/
+
+/**************************************************************************************************
+                                             =footer
+***************************************************************************************************/
+
 footer#colophon {
     height: 30px;
     background: #52bae1;
     color: white;
+    padding: 0;
+    border: 0;
 }
 
 footer#colophon p {
@@ -392,31 +366,8 @@ footer#colophon p a{
     font-family: "Lucida Handwriting";
 }
 
-/* ============================= */
-/* ! duoshuo comment             */
-/* ============================= */
-#ds-thread p.ds-powered-by {display: none;}
-#ds-thread .ds-comments-info {text-align: center;}
-#ds-thread .ds-comments-info select.ds-sort {border: none;background: #f7f7f7;font-size: 12px;}
-#ds-thread .ds-comments-info span.ds-comments-count {font-size: 20px; font-weight: bold;}
+/* footer to bottom */
 
-
-
-/* ========================================== */
-/* ! Provide higher res assets for iPhone 4   */
-/* ========================================== */
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
-
-/*	.logo {
-		background: url(logo2x.jpg) no-repeat;
-		background-size: 212px 303px;
-	}*/
-
-}
-
-
-/*=================footer stick bottom ===============*/
 html, body {
 height: 100%;
 }
@@ -429,4 +380,42 @@ height: 100%;
 
 .push {
     height: 30px;
+}
+
+
+/**************************************************************************************************
+                                             =duoshou comment plugin
+***************************************************************************************************/
+#comment-container {
+	overflow: visible;
+}
+#ds-thread p.ds-powered-by {display: none;}
+#ds-thread .ds-comments-info {text-align: center;}
+#ds-thread .ds-comments-info select.ds-sort {border: none;background: #f7f7f7;font-size: 12px;}
+#ds-thread .ds-comments-info span.ds-comments-count {font-size: 20px; font-weight: bold;}
+
+
+#ie6 .container {
+    width: 960px;    
+}
+
+#ie6 h2#site-description {
+    width: 630px;
+}
+
+#ie6 header h1#site-title {
+	margin: 15px;
+}
+
+#ie6 .home article {
+    margin: 0 23px;
+}
+
+#ie6 header#branding #single-title {
+	width: 600px;
+}
+
+#ie6 .single article  .entry-gallery-image {
+	margin: 0 23px;
+	margin-bottom: 30px;
 }

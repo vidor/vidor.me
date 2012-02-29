@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
 				function() {
                     
                     //$(this).replaceWith($(this).html());
-                    $($(this).html()).hide().appendTo('#content').slideDown();
+                    $($(this).html()).appendTo('#primary').slideDown();
                     
 					// Update page number and nextLink.
 					pageNum++;

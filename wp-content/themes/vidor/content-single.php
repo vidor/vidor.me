@@ -5,12 +5,7 @@
 		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
 			<!-- todo -->
 		<?php else : ?>
-    		<div class="entry-content">
-    			<div class="entry-content-container"><?php the_content();?></div>
-    		</div><!-- .entry-content -->
-            
-            <div class="entry-gallery">
-                <div class="entry-gallery-container">
+
         	    <?php $images =& get_children('post_type=attachment&post_mime_type=image&post_parent=' . $post->ID ); $n = 0; ?>
                 <?php foreach($images as $image): ?>
                     <div class="entry-gallery-image">
@@ -18,8 +13,7 @@
                         <div class="entry-gallery-image-title"><p><?php echo $image->post_title;?></p></div>
                     </div>
                 <?php endforeach;?> 
-                </div>
-            </div>
+
 		<?php endif; ?>
 		
 

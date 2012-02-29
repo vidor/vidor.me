@@ -4,7 +4,7 @@ Plugin Name: 多说
 Plugin URI: http://wordpress.org/extend/plugins/duoshuo/
 Description: 追求最佳用户体验的社会化评论框，为中小网站提供“新浪微博、QQ、人人、豆瓣等多帐号登录并评论”功能。“多说”帮你搭建更活跃，互动性更强的评论平台，功能强大且永久免费。
 Author: 多说网
-Version: 0.5
+Version: 0.6
 Author URI: http://duoshuo.com/
 */
 
@@ -168,7 +168,7 @@ class DuoshuoClient{
 		
 		$response = $this->http->request($url, $args);
 			
-		if ($response->errors){
+		if (isset($response->errors)){
 			if (isset($response->errors['http_request_failed'])){
 				$message = $response->errors['http_request_failed'][0];
 				if ($message == 'name lookup timed out')
@@ -207,7 +207,7 @@ class DuoshuoClient{
 		);
 		
 		$response = $this->http->request($url, $args);
-		if ($response->errors)
+		if (isset($response->errors))
             throw new Duoshuo_Exception('连接服务器失败,详细信息：' . json_encode($response->errors), Duoshuo_Exception::REQUEST_TIMED_OUT);
         
 		return $response['body'];
@@ -235,7 +235,7 @@ class DuoshuoClient{
 class Duoshuo {
 	const DOMAIN = 'duoshuo.com';
 	const STATIC_DOMAIN = 'static.duoshuo.com';
-	const VERSION = '0.5';
+	const VERSION = '0.6';
 	
 	/**
 	 * 
@@ -268,6 +268,8 @@ class Duoshuo {
 	static $errorMessages = array();
 	
 	static $EMBED = false;
+	
+	static $scriptsPrinted = false;
 	
 	static function setVariables(){
 		self::$shortName = get_option('duoshuo_short_name');
@@ -310,25 +312,36 @@ class Duoshuo {
 			
 			//// backwards compatible (before WP 3.0)
 			if (version_compare( $wp_version, '3.0', '<' )){
-				add_action('admin_init', array('Duoshuo', 'addPostMetaBoxes'));
-				add_action('admin_init', array('Duoshuo', 'addPageMetaBoxes'));
-				
-				function duoshuo_wp_version_notice(){
-					echo '<div class="updated"><p>您的WordPress版本低于3.0，如果您能升级WordPress，多说就能更好地为您服务。</p></div>';
+				if (current_user_can('administrator')){
+					add_action('admin_init', array('Duoshuo', 'addPostMetaBoxes'));
+					add_action('admin_init', array('Duoshuo', 'addPageMetaBoxes'));
+					
+					function duoshuo_wp_version_notice(){
+						echo '<div class="updated"><p>您的WordPress版本低于3.0，如果您能升级WordPress，多说就能更好地为您服务。</p></div>';
+					}
+					add_action('admin_notices', 'duoshuo_wp_version_notice');
 				}
-				add_action('admin_notices', 'duoshuo_wp_version_notice');
 			}
 			else{
 				add_action('add_meta_boxes_post', array('Duoshuo', 'addPostMetaBoxes'));
 				add_action('add_meta_boxes_page', array('Duoshuo', 'addPageMetaBoxes'));
 			}
 			
-			add_action('publish_post', array('Duoshuo','syncPostToRemote'));
-			add_action('publish_page', array('Duoshuo','syncPostToRemote'));
+			if (function_exists('get_post_types')){
+				foreach(get_post_types() as $type)
+					if ($type !== 'nav_menu_item' && $type !== 'revision')
+						add_action('publish_' . $type, array('Duoshuo','syncPostToRemote'));
+			}
+			else{
+				add_action('publish_post', array('Duoshuo','syncPostToRemote'));
+				add_action('publish_page', array('Duoshuo','syncPostToRemote'));
+			}
 			add_action('profile_update', array('Duoshuo', 'syncUserToRemote'));
 			add_action('user_register', array('Duoshuo', 'syncUserToRemote'));
 			
 			add_action('wp_dashboard_setup', array('Duoshuo','addDashboardWidget'));
+			
+			add_action('load-edit-comments.php', array('Duoshuo','addOriginalCommentsNotice'));
 			
 			if (defined('DOING_AJAX')){
 				add_action('wp_ajax_duoshuo_export', array('Duoshuo', 'export'));
@@ -350,6 +363,8 @@ class Duoshuo {
 			add_filter('comments_template', array('Duoshuo','commentsTemplate'));
 			
 			//add_filter('comments_number')
+			if (is_active_widget(false, false, 'recent-comments'))
+				add_action('wp_footer', array('Duoshuo', 'outputFooterCommentJs'));
 		}
 		
 		add_filter('comments_open', array('Duoshuo', 'commentsOpen'));
@@ -360,8 +375,6 @@ class Duoshuo {
 				wp_schedule_event(time(), 'hourly', 'duoshuo_sync_cron');
 			}
 		}
-		 
-		add_action('widgets_init', array('Duoshuo','registerWidgets'));
 	}
 	
 	static function addPages() {
@@ -415,6 +428,17 @@ class Duoshuo {
 			    );
 		    }
 		}
+	}
+	
+	static function addOriginalCommentsNotice(){
+		function duoshuo_original_comments_notice(){
+			echo '<div class="updated">'
+				. '<p>多说正在努力地为您的网站提供强大的社会化评论服务，WordPress原生评论数据现在仅用于备份；</p>'
+				. '<p>多说会将每一条评论实时写回本地数据库，但如果日后您在多说删除/修改了评论，并不会影响本地数据；</p>'
+				. '<p>您在本页做的任何管理评论操作，都不会对多说评论框上的评论起作用，请访问<a href="http://' . Duoshuo::$shortName . '.' . Duoshuo::DOMAIN . '/admin/" target="_blank">评论管理后台</a>进行评论管理。</p>'
+				. '</div>';
+		}
+		add_action('admin_notices', 'duoshuo_original_comments_notice');
 	}
 	
 	static function addPostMetaBoxes($post = null){
@@ -556,9 +580,9 @@ class Duoshuo {
 	    
 	    if (empty($threadId)){
 	    	self::syncUserToRemote($post->post_author);
-	    	self::syncPostToRemote($post->ID);
+	    	self::syncPostToRemote($post);
 		    try{
-		    	self::syncPostComments($post->ID);
+		    	self::syncPostComments($post);
 		    }
 		    catch(Duoshuo_Exception $e){
 				self::showException($e);
@@ -628,6 +652,18 @@ class Duoshuo {
 </script><?php
 	}
 	
+	static function outputFooterCommentJs() {
+		
+if (!did_action('wp_head') && !Duoshuo::$scriptsPrinted){
+	Duoshuo::printScripts();
+	Duoshuo::$scriptsPrinted = true;
+}?>
+<script type="text/javascript">
+	DUOSHUO.RecentCommentsWidget('.widget_recent_comments #recentcomments', {template : 'wordpress'});
+</script>
+	<?php
+	}
+	
 	// Register widgets.
 	static function registerWidgets(){
 		require_once dirname(__FILE__) . '/widgets.php';
@@ -692,6 +728,7 @@ function updateDuoshuoUnique(unique){
 	static function export(){
 		@set_time_limit(0);
 		@ini_set('memory_limit', '256M');
+		@ini_set('display_errors', 1);
 		
 		$progress = get_option('duoshuo_synchronized');
 		
@@ -801,8 +838,6 @@ function updateDuoshuoUnique(unique){
 	}
 	
 	static $optionsMap = array(
-		'blogname'	=>	'name',
-		'blogdescription'=>'description',
 		'home'		=>	'url',
 		'siteurl'	=>	'siteurl',
 		'admin_email'=>	'admin_email',
@@ -812,7 +847,10 @@ function updateDuoshuoUnique(unique){
 	);
 	
 	static function packageOptions(){
-		$options = array();
+		$options = array(
+			'name'	=>	htmlspecialchars_decode(get_option('blogname'), ENT_QUOTES),
+			'description'=>htmlspecialchars_decode(get_option('blogdescription'), ENT_QUOTES),
+		);
 		foreach(self::$optionsMap as $key => $value)
 			$options[$value] = get_option($key);
 		
@@ -865,7 +903,7 @@ function updateDuoshuoUnique(unique){
 				self::updateUserMeta($data['source_user_id'], 'duoshuo_user_id', $remoteResponse['response']['user_id']);
 		}
 		catch(Duoshuo_Exception $e){
-			self::showException($remoteResponse);
+			self::showException($e);
 		}
 	}
 	
@@ -897,14 +935,14 @@ function updateDuoshuoUnique(unique){
 			}
 		}
 		catch(Duoshuo_Exception $e){
-			self::showException($remoteResponse);
+			self::showException($e);
 		}
 	}
 	
 	static function exportPosts($limit, $offset = 0){
 		global $wpdb;
 		
-		$columns = array('ID', 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_title', 'post_excerpt', 'post_status', 'comment_status', 'post_name', 'post_modified_gmt', 'guid', 'post_type');
+		$columns = array('ID', 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_title', 'post_excerpt', 'post_status', 'comment_status', 'post_name', 'post_modified_gmt', 'guid', 'post_type', 'post_parent');
 		$posts = $wpdb->get_results( $wpdb->prepare("SELECT " . implode(',', $columns) . "  FROM $wpdb->posts where post_type <> 'nav_menu_item' and post_status <> 'auto-draft' and post_status <> 'inherit' order by ID asc limit $offset,$limit") );
 		
 		$data = array();
@@ -926,19 +964,19 @@ function updateDuoshuoUnique(unique){
 	 * 同步这篇文章到所有社交网站
 	 * @param string $postId
 	 */
-	static function syncPostToRemote($postId){
-		$post = get_post($postId);
+	static function syncPostToRemote($post){
+		if (is_numeric($post))
+			$post = get_post($post);
 		
 		$params = self::packagePost($post);
 		
-		$user = wp_get_current_user();
-		$params['local_identity'] = $user->ID;
-		$params['signature'] = self::buildSignature($user->ID);
+		$params['local_identity'] = $post->post_author;
+		$params['signature'] = self::buildSignature($post->post_author);
 		
 		try{
 			$response = self::getClient()->request('POST', 'threads/sync', $params);
 			if ($response['code'] == 0 && isset($response['response']))
-				update_post_meta($postId, 'duoshuo_thread_id', $response['response']['thread_id']);
+				update_post_meta($post->ID, 'duoshuo_thread_id', $response['response']['thread_id']);
 		}
 		catch(Duoshuo_Exception $e){
 			self::showException($e);
@@ -966,6 +1004,10 @@ function updateDuoshuoUnique(unique){
 			'source_author_id'=>$post->post_author,
 			'source_thread_id'=>$post->ID,
 		);
+		
+		if (!class_exists('nggLoader') || class_exists('nggRewrite'))
+			$params['filtered_content'] = str_replace(']]>', ']]&gt;', apply_filters('the_content', $post->post_content));
+		
 		if (isset($_POST['sync_to']))
 			$params['sync_to'] = implode(',', $_POST['sync_to']);
 		
@@ -1020,12 +1062,18 @@ function updateDuoshuoUnique(unique){
 		return count($comments);
 	}
 	
-	static function syncPostComments($postId){
+	static function syncPostComments($post){
 		global $wpdb;
 		
-		$comments = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $wpdb->comments where comment_post_ID = %d AND comment_agent NOT LIKE 'Duoshuo/%%' order by comment_ID asc", $postId));
+		$comments = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $wpdb->comments where comment_post_ID = %d AND comment_agent NOT LIKE 'Duoshuo/%%' order by comment_ID asc", $post->ID));
 	    
-		$remoteResponse = self::getClient()->request('POST','import/wordpressComments', array('data'=>json_encode($comments)));
+		$params = array(
+			'local_identity' => $post->post_author,
+			'signature' => self::buildSignature($post->post_author),
+			'data'		=> json_encode($comments),
+		);
+		
+		$remoteResponse = self::getClient()->request('POST','import/wordpressComments', $params);
 		
 		return $remoteResponse;
 	}
@@ -1287,3 +1335,4 @@ if(is_admin()){//在admin界面内执行的action
 else{
 	add_action('init', array('Duoshuo','initialize'));
 }
+add_action('widgets_init', array('Duoshuo','registerWidgets'));

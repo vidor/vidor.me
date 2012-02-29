@@ -36,8 +36,8 @@ wp_head();?>
 <body <?php body_class(); ?>>
 
 <div id="page" class="hfeed">
-	<header id="branding" role="banner">
-			<hgroup>
+	<header id="branding" role="banner" class="row">
+			<hgroup class="container">
 				<h1 id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="首页" rel="home"><span><?php bloginfo( 'name' ); ?></span></a></h1>
                 <?php if( is_singular() ) : ?>
                 <div id="single-title" class="ninecol last">

@@ -65,6 +65,9 @@ catch(Duoshuo_Exception $e){
 </form>
 </div>
 
+<h3>意见反馈</h3>
+<p>你的意见是多说成长的原动力，<a href="http://blog.duoshuo.com/feedback-wordpress-<?php echo str_replace('.','-',Duoshuo::VERSION);?>/" target="_blank">欢迎给我们留言</a>，或许你想要的功能下一个版本就会实现哦！</p>
+
 <?php
 $services = array(
 	'qzone'	=>	'QQ空间',
