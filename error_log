@@ -5,3 +5,4 @@
 [29-Feb-2012 13:56:36] PHP Parse error:  syntax error, unexpected T_STRING in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 35
 [29-Feb-2012 13:56:52] PHP Parse error:  syntax error, unexpected T_STRING in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 35
 [29-Feb-2012 14:00:26] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING, expecting ',' or ';' in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 41
+[05-Mar-2012 15:31:19] PHP Fatal error:  Call to undefined function  twentyeleven_content_nav() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/author.php on line 39

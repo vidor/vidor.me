@@ -9,7 +9,7 @@
         	    <?php $images =& get_children('post_type=attachment&post_mime_type=image&post_parent=' . $post->ID ); $n = 0; ?>
                 <?php foreach($images as $image): ?>
                     <div class="entry-gallery-image">
-                        <img class="<?php echo 'image-' . $image->ID; ?>" src="<?php echo array_shift(wp_get_attachment_image_src($image->ID, 'gallery'))?>" />
+                        <img class="<?php echo 'image-' . $image->ID; ?>" src="<?php echo array_shift(wp_get_attachment_image_src($image->ID, 'galleria'))?>" />
                         <div class="entry-gallery-image-title"><p><?php echo $image->post_title;?></p></div>
                     </div>
                 <?php endforeach;?> 

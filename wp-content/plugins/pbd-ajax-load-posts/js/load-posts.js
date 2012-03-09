@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 	if(pageNum <= max) {
 		// Insert the "More Posts" link.
 		$('#primary').append('<div style="display: none;" class="alp pbd-alp-placeholder-'+ pageNum +'"></div>');
-		$('#main').after('<p id="pbd-alp-load-posts" class="container"><a href="#">查看更多</a></p>');
+		$('#main').after('<p id="pbd-alp-load-posts" class="row"><a href="#">查看更多</a></p>');
 	}
 	
 	
