@@ -1452,7 +1452,7 @@ Galleria = function() {
 
             // begin styleforce
             Utils.forceStyles(self.get('container'), {
-                position: 'absolute',
+                position: 'fixed',
                 top: 0,
                 left: 0,
                 width: '100%',
@@ -1507,8 +1507,6 @@ Galleria = function() {
                     imageTarget: self.getActiveImage(),
                     thumbTarget: thumb
                 });
-                
-                //fullscreen.scale(); // for ie 6 rescale...
 
                 big.load( data.big, function( big ) {
                     self._scaleImage( big, {
@@ -1523,19 +1521,12 @@ Galleria = function() {
                             });
                             var image = self._controls.getActive().image;
                             if ( image ) {
-                            	
-
                                 $( image ).width( big.image.width ).height( big.image.height )
                                     .attr( 'style', $( big.image ).attr('style') )
                                     .attr( 'src', big.image.src );
-                                    
-                                fullscreen.scale();
-
-
                             }
                         }
                     });
-                	
                 });
             }
 
@@ -1559,7 +1550,6 @@ Galleria = function() {
             $win.resize( function() {
                 fullscreen.scale();
             } );
-
         },
 
         scale : function() {
@@ -2283,17 +2273,17 @@ Galleria.prototype = {
             'info-text' :
                 ['info-title', 'info-description'],
             'info' :
-                ['info-text','counter'],
+                ['info-text', 'counter'],
             'image-nav' :
                 ['image-nav-right', 'image-nav-left'],
             'stage' :
-                ['images', 'loader', 'image-nav'],
+                ['images', 'image-nav'],
             'thumbnails-list' :
                 ['thumbnails'],
             'thumbnails-container' :
                 ['thumb-nav-left', 'thumbnails-list', 'thumb-nav-right'],
             'container' :
-                ['stage', 'thumbnails-container', 'info', 'tooltip']
+                ['stage', 'thumbnails-container', 'info', 'tooltip', 'loader']
         });
 
         Utils.hide( this.$( 'counter' ).append(
