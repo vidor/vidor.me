@@ -22,14 +22,15 @@ jQuery(document).ready(function($) {
 
     $('body.home').on('mouseenter', '.home article a.post-link', function() {
     	if( $(document).width() > 480 )
-         $(this).stop().animate({boxShadow: '0px 0px 10px #52BAE1', borderLeftColor: '#52BAE1', borderRightColor: '#52BAE1', borderBottomColor: '#52BAE1', borderTopColor: '#52BAE1'});
-
+         //$(this).stop().animate({boxShadow: '0px 0px 10px #52BAE1', borderLeftColor: '#52BAE1', borderRightColor: '#52BAE1', borderBottomColor: '#52BAE1', borderTopColor: '#52BAE1'});
+		 $(this).stop().animate({backgroundColor: '#dddddd'});
     });
     
     $('body.home').on('mouseleave', '.home article a.post-link', function() {
         if( $(document).width() > 480 )
-            $(this).stop().animate({boxShadow: '0 0 0 #52BAE1', borderLeftColor: '#ccc', borderRightColor: '#ccc', borderBottomColor: '#ccc', borderTopColor: '#ccc'});
-    });
+            //$(this).stop().animate({boxShadow: '0 0 0 #52BAE1', borderLeftColor: '#ccc', borderRightColor: '#ccc', borderBottomColor: '#ccc', borderTopColor: '#ccc'});
+			$(this).stop().animate({backgroundColor: '#ffffff'});
+	});
  
     
 /************************************************

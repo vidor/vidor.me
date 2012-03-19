@@ -17,56 +17,17 @@ get_header(); ?>
 		<div id="primary" class="container">
 
 			<?php if ( have_posts() ) : ?>
-            
-                <?php $col = 4; $n = 0;?>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
-                    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                    <a class="post-link" href="<?php the_permalink(); ?>" rel="bookmark">
-                
-                		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
+                		<?php if ( is_search() ) : ?>
                 			<!-- todo -->
-                		<?php else : ?>
-                        
-                		<div class="entry-thumbnail">
-                			<?php if ( has_post_thumbnail() ) { //the_post_thumbnail(array('title' => "")); 
-                				$thumbnail = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ) , 'galleria') ;
-                			} ?>
-                			<img src="<?php echo $thumbnail[0]; ?>" />
-                		</div><!-- .entry-thumbnail -->
-                		<?php endif; ?>
-                        
-                        <div class="entry-content">
-                        
-                        	<div class="entry-meta">
-                    			<div class="entry-date"><?php the_time('n-j, Y'); ?></div>
-                                <div class="entry-count">
-                        			<div class="entry-foto-count"><?php $images =& get_children('post_type=attachment&post_mime_type=image&post_parent=' . $post->ID ); echo count($images);?></div>
-                        			<div class="entry-comment-count"> <?php comments_number( '0', '1', '%' ); ?></div>
-                                </div>
-                    		</div><!-- #entry-meta -->
-                            
-                        	<div class="entry-header">
-                    			<?php if ( is_sticky() ) : ?>
-                    				<!-- todo -->
-                    			<?php else : ?>
-                    			<h1 class="entry-title"><?php the_title(); ?></h1>
-                    			<?php endif; ?>
-                    		</div><!-- .entry-header -->
-                            
-                            <div class="entry-excerpt">
-                                <?php the_content('...');?>
-                            </div>
-                        
-                        </div><!-- .entry-content -->
-                
-                        
-                    </a>
-                	</article><!-- #post-<?php the_ID(); ?> -->
-                    
-                        
+                		<?php elseif ( is_sticky() ) : ?>
+							<?php get_template_part('content', 'sticky');?>
+						<?php else : ?>
+							<?php get_template_part('content', 'index');?>
+						<?php endif;?>
 
 				<?php endwhile; ?>
 

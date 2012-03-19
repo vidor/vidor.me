@@ -17,3 +17,12 @@
 [09-Mar-2012 10:35:00] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-single.php on line 16
 [10-Mar-2012 02:43:14] PHP Fatal error:  Call to undefined function  twentyeleven_content_nav() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/category.php on line 29
 [10-Mar-2012 11:38:20] PHP Parse error:  syntax error, unexpected T_CONSTANT_ENCAPSED_STRING in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-single.php on line 16
+[19-Mar-2012 05:21:26] PHP Parse error:  syntax error, unexpected T_IF, expecting ':' in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 30
+[19-Mar-2012 05:25:01] PHP Parse error:  syntax error, unexpected '<' in /home5/vidorme/public_html/dev/wp-content/themes/vidor/index.php on line 32
+[19-Mar-2012 05:25:17] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
+[19-Mar-2012 05:26:11] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
+[19-Mar-2012 05:26:51] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
+[19-Mar-2012 05:26:54] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
+[19-Mar-2012 05:26:56] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
+[19-Mar-2012 05:28:12] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
+[19-Mar-2012 05:29:10] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
