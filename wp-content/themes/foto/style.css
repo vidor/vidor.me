@@ -1,5 +1,5 @@
 /*
-Theme Name: Vidor
+Theme Name: Foto
 Theme URI: http://wordpress.org/extend/themes/twentyeleven
 Author: the WordPress team
 Author URI: http://wordpress.org/
@@ -25,16 +25,10 @@ body {
 
 .row {
 	/*padding: 60px 10px; */
-	padding: 60px 0;
-	
-	border-bottom: 1px solid #d7d7d7;
-    border-top: 1px solid white;
     overflow: hidden;
 }
 
 .container {
-	width: 960px;
-	margin: 0 auto;
     overflow: hidden;
 }
 
@@ -45,13 +39,12 @@ body {
 
 header {
     overflow: hidden;
-    border-top: 8px solid #52bae1 !important;
+    border-top: 8px solid #52BAE1 !important;
+    padding: 60px 0;
 }
 
 
 header h1#site-title {
-	margin-left: 30px;
-    float: left;
 }
 
 header h1#site-title a {
@@ -59,6 +52,7 @@ header h1#site-title a {
 	background: url('images/logo.png') no-repeat;
 	height: 98px;
 	width: 100px;
+	margin: 0 auto;
 }
 
 header h1#site-title a:hover {
@@ -83,12 +77,10 @@ header h2#site-description {
 ***************************************************************************************************/
 
 #main.row {
-    padding: 30px 0;
 }
 
 #primary {
     margin: 0 auto;
-    max-width: 960px;
     overflow: hidden;
 }
 
@@ -97,20 +89,18 @@ header h2#site-description {
 .home article {
     position: relative;
     float: left;
-    margin: 30px;
+    margin: 0px 5px 10px 5px;
     display: block;
-    width: 180px;
-    height: 170px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;	
+    width: 290px;
+    height: 200px;
+
 }
 
 
 
 .home article a.post-link {
     background: white;
-    position: static;
+    position: relative;
     cursor: pointer;
     display: block;
     width: 100%;
@@ -119,12 +109,6 @@ header h2#site-description {
     text-decoration: none;
     overflow: hidden;
     text-overflow:ellipsis;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     /* text-shadow: 1px 1px rgba(255,150, 150, 1); */
   
 }
@@ -132,50 +116,61 @@ header h2#site-description {
 
 
 .home article  img {
-    width: 180px;
-    height: auto;
+    width: 290px;
+    height: 200px;
 }
 
 .home article .entry-content {
-    padding: 3px;
-	margin-top: -5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+	background: #52BAE1;
+}
+
+.home article .entry-content-inner {
+	margin-top: 70px;
 }
 
 
 .home article .entry-header h1 {
     font-size: 13px;
+    color: white;
     padding: 5px 0;
     font-weight: bolder;
+    text-align: center;
 }
 
 
 
-.home article .entry-content .entry-meta {
-    width: 100%;
-    bottom: 0;
+.home article .entry-content  .entry-date,
+.home article .entry-content .entry-count {
     font-family: verdana;
-    font-size: 12px;
-    height: 15px;
-	color: #aaa;
+    text-align: center;
+    font-size: 13px;
+    height: 20px;
+	color: #eee;
 }
 
 .home article .entry-content  .entry-date {
-    float: left;
 }
 
 .home article .entry-content .entry-count {
-    float: right;
+	width: 90px;
+	margin: 0 auto;
 }
 
 
 .home article .entry-content  .entry-count div {
-    padding: 0 0 0 18px;
+    padding: 2px 0 2px 20px;
     margin-left: 8px;
     float: left;
 }
 .home article .entry-content  .entry-count div.entry-foto-count,
 .home article .entry-content  .entry-count div.entry-comment-count {
-    background: url('images/entry-meta.png') left 2px no-repeat;
+    background: url('images/entry-meta-white.png') left 3px no-repeat;
 }
 
 .home article .entry-content  .entry-count div.entry-comment-count var  {
@@ -183,58 +178,10 @@ header h2#site-description {
 }
 
 .home article .entry-content  .entry-count div.entry-comment-count {
-    background-position: left -17px;
+    background-position: left -18px;
+    float: right;
 }
 
-.home article.sticky {
-	float: none;
-	width: 900px;
-	height: 300px;
-	margin: 30px;
-}
-
-.home article.sticky .entry-content {
-	position: relative;
-	margin: 0;
-	height: 19px;
-}
-
-.home article.sticky .entry-header {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	text-align: center;
-	height: 25px;
-	line-height: 25px;
-}
-
-.home article.sticky .entry-header  h1 {
-	padding: 0;
-}
-.home article.sticky .entry-meta {
-	height: 19px;
-	line-height: 19px;
-}
-
-.home article.sticky .entry-thumbnail {
-	position: static;
-	overflow: hidden;
-	height: 275px;
-}
-
-.home article.sticky .entry-thumbnail img {
-	width: 100%;
-	margin-top: -250px;
-}
-
-.home article.sticky .entry-content  .entry-count div.entry-comment-count {
-	background-position: left -15px;
-}
-
-.home article.sticky .entry-content  .entry-count div.entry-foto-count {
-	background-position: left 4px;
-}
 
 
 /**************************************************************************************************
@@ -242,24 +189,29 @@ header h2#site-description {
 ***************************************************************************************************/
 
 #page #pbd-alp-load-posts {
-    border-top: 1px solid white;
-    padding: 30px 0;
+    float: left;
+    width: 290px;
+    height: 200px;
+    padding: 0 5px 10px 5px;
 }
 
 #page #pbd-alp-load-posts a {
     display: block;
-    width: 120px;
+    width: 100%;
+    height: 100%;
+    line-height: 200px;
     text-align: center;
     font-size: 20px;
-    height: 40px;
-    line-height: 40px;
-    color: white;
+    color: #52bae1;
     margin: 0 auto;
     text-decoration: none;
-    border-radius: 3px;
-    background: #52bae1;
+    background: #ddd;
 }
 
+#page #pbd-alp-load-posts a:hover {
+	background: #52bae1;
+	color: white;
+}
 
 
 /**************************************************************************************************

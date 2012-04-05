@@ -15,8 +15,9 @@ jQuery(document).ready(function($) {
 	 */
 	if(pageNum <= max) {
 		// Insert the "More Posts" link.
-		$('#primary').append('<div style="display: none;" class="alp pbd-alp-placeholder-'+ pageNum +'"></div>');
-		$('#main').after('<p id="pbd-alp-load-posts" class="row"><a href="#">查看更多</a></p>');
+		
+		$('#primary').append('<p id="pbd-alp-load-posts"><a href="#">更多</a></p>');
+		$('#pbd-alp-load-posts').before('<div style="display: none;" class="alp pbd-alp-placeholder-'+ pageNum +'"></div>');
 	}
 	
 	
@@ -29,7 +30,7 @@ jQuery(document).ready(function($) {
 		if(pageNum <= max) {
 		
 			// Show that we're working.
-			$(this).text('正在加载...');
+			$(this).text('...');
 			
 			$('.pbd-alp-placeholder-'+ pageNum).load(nextLink + ' .post',
 				function() {
@@ -42,11 +43,11 @@ jQuery(document).ready(function($) {
 					nextLink = nextLink.replace(/paged=[0-9]?/, 'paged='+ pageNum);
 					
 					// Add a new placeholder, for when user clicks again.
-						$('#primary').append('<div style="display: none;" class="alp pbd-alp-placeholder-'+ pageNum +'"></div>')
+						$('#pbd-alp-load-posts').before('<div style="display: none;" class="alp pbd-alp-placeholder-'+ pageNum +'"></div>')
 					
 					// Update the button message.
 					if(pageNum <= max) {
-						$('#pbd-alp-load-posts a').text('查看更多');
+						$('#pbd-alp-load-posts a').text('更多');
 					} else {
 						$('#pbd-alp-load-posts').hide();
 					}
