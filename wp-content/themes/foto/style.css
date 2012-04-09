@@ -23,13 +23,8 @@ body {
     font-family: "Lucida Grande","Microsoft Yahei",Arial,Calibri,"Trebuchet MS",Helvetica,Hiragino,STHeiti,"Microsoft Jhenghei",sans-serif;
 }
 
-.row {
-	/*padding: 60px 10px; */
-    overflow: hidden;
-}
 
 .container {
-    overflow: hidden;
 }
 
 
@@ -38,7 +33,6 @@ body {
 ***************************************************************************************************/
 
 header {
-    overflow: hidden;
     border-top: 8px solid #52BAE1 !important;
     padding: 60px 0;
 }
@@ -81,7 +75,8 @@ header h2#site-description {
 
 #primary {
     margin: 0 auto;
-    overflow: hidden;
+    margin-bottom: 30px;
+    overflow-y: hidden;
 }
 
 
@@ -107,7 +102,6 @@ header h2#site-description {
     height: 100%;
     color: #333;
     text-decoration: none;
-    overflow: hidden;
     text-overflow:ellipsis;
     /* text-shadow: 1px 1px rgba(255,150, 150, 1); */
   
@@ -118,6 +112,7 @@ header h2#site-description {
 .home article  img {
     width: 290px;
     height: 200px;
+    display: block;
 }
 
 .home article .entry-content {
@@ -217,88 +212,43 @@ header h2#site-description {
 /**************************************************************************************************
                                              =single post
 ***************************************************************************************************/
-
-header#branding #single-title {
-    margin-left: 100px;
-    float: left;
+.single .container {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0 5px;
 }
-
-header#branding #single-title h2 {
-	max-width: 630px;
-    font-style: normal;
-}
-
-#single-title .entry-meta {
-    padding-top: 10px;
-}
-
-#single-title .entry-meta div {
-    float: left;
-    font-family: verdana;
-    color: #aaa;
-    margin-right: 20px;
-}
-
-#single-title .entry-meta div.entry-date {
-}
-
-#single-title .entry-meta div.entry-foto-count,
-#single-title .entry-meta div.entry-comment-count {
-    background: url('images/entry-meta-blue.png') 0 2px no-repeat;
-    padding-left: 25px;
-}
-
-#single-title .entry-meta div.entry-comment-count {
-    background-position: 0 -23px;
-}
-
-/*==========*/
 
 
 .single .entry-content #entry-content-inner {
-	margin: 0 30px;
-    font-size: 18px;
-    line-height: 34px;
+	background: white;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
 }
 
 .single article {
-    overflow: hidden;
 }
 
 
 
 .single article  .entry-gallery-image {
-    position: relative;
-    overflow: hidden;
-    width: 180px;
-    height: 119px;
-    margin: 30px 30px;
-    margin-bottom: 30px;
-    cursor: pointer;
-    float: left;
+	cursor: pointer;
+	background: white;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 30px;
 }
 
 .single article  .entry-gallery-image img {
-    z-index: 1;
-    width: 180px;
-    height: auto;
+	display: block;
+	width: 100%;
+	height: auto;
 }
 
 .single article .entry-gallery-image .entry-gallery-image-title {
-    position: absolute;
-    z-index: 2;
-    text-align: center;
-    width: 100%;
-    bottom: -119px;
-    color: white;
-    font-size: 12px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    background: url('images/overlay.png');
+	padding: 10px;
+
 }
 
 .single article  .entry-gallery-image .entry-gallery-image-title p {
-    padding: 5px;
 }
 
 /**************************************************************************************************
@@ -306,7 +256,11 @@ header#branding #single-title h2 {
 ***************************************************************************************************/
 
 #galleria {
-	margin: 30px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 /**************************************************************************************************
@@ -314,43 +268,39 @@ header#branding #single-title h2 {
 ***************************************************************************************************/
 
 
-@media all and (max-width: 960px) {  /* 3 col */
-	header h2#site-description {font-size: 18px; width: 380px;}
-	.single #single-title h2 {font-size: 18px; width: 380px;}
-	.container {width: 720px;}
+@media all and (min-width: 1800px) {
+	#primary {width: 1800px;}
 }
 
-@media all and (max-width: 720px)  {  /* 2 col */
-	header h1#site-title {float: none; margin: 0 auto; margin-bottom: 30px;}
-	header h1#site-title a {width: 100px; margin: 0 auto;}
-	header h2#site-description {float: none; width: 100%; margin: 0;}
-	.container {width: 560px;}
-	.home article {margin: 30px 50px;}
-	.single article  .entry-gallery-image {margin: 0 50px 30px 50px;}
-    .single header#branding #single-title {float: 0; margin: 0 0 0 0; width: 100%;}
-    .single header#branding #single-title h2 {text-align: center; width: 100%;}
-    .single #single-title .entry-meta {float: none; width: 250px; margin: 0 auto;}
+@media all and (max-width: 1800px) and (min-width: 1500px) {
+	#primary {width: 1500px;}
 }
 
-@media all and (max-width: 560px)  {  /* less margin */
-	.container {width: 480px;}
-	.home article {margin: 30px 30px;}
-	.single article .entry-gallery-image {margin: 0 30px 30px 30px;}
+@media all and (max-width: 1500px) and (min-width: 1200px) {
+	#primary {width: 1200px;}
 }
 
-@media all and (max-width: 480px) {                        /* 1 col */
-	.container {width: 100%;}
-	.home article {float: none; width: 100%; height: auto; margin: 30px 0;}
-    .home article a.post-link {border: none;}
-	.home article .entry-thumbnail img {width: 100%; height: auto; border-radius: 0;}
-	.single article .entry-gallery-image {float: none; width: 100%; height: auto; margin: 0 0 30px 0;}
-	.single article .entry-gallery-image img {width: 100%; border-radius: 0;}
-	.home article a.post-link {border-radius: 0; background: #333; color: #d7d7d7;}
-	.home article .entry-content .entry-excerpt {display: none;}
-	.home article .entry-header {position: absolute; top: 5px; left: 5px; color: #333; text-shadow: 0 0 2px white; }
-	.home article .entry-header h1 {font-size: 18px;}
-	
+@media all and (max-width: 1200px) and (min-width: 900px) {
+	#primary {width: 900px;}
 }
+
+@media all and (max-width: 900px) and (min-width: 600px) {
+	#primary {width: 600px;}
+}
+
+@media all and (max-width: 600px) and (min-width: 300px) {
+	.home #main {padding: 0 5px;}
+	#primary {width: 100%}
+	.home article, #page #pbd-alp-load-posts {
+		width: 100%; margin: 0 0 10px 0;
+		height: auto;
+		padding: 0;
+	}
+	.home article img {width: 100%; height: auto;}
+	.home article .entry-content {position: relative; display: block;}
+	.home article .entry-content-inner {margin: 0 0 0 0;}
+}
+
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) { 
 
@@ -418,27 +368,3 @@ height: 100%;
 #ds-thread .ds-comments-info span.ds-comments-count {font-size: 20px; font-weight: bold;}
 
 
-#ie6 .container {
-    width: 960px;    
-}
-
-#ie6 h2#site-description {
-    width: 630px;
-}
-
-#ie6 header h1#site-title {
-	margin: 15px;
-}
-
-#ie6 .home article {
-    margin: 0 23px;
-}
-
-#ie6 header#branding #single-title {
-	width: 600px;
-}
-
-#ie6 .single article  .entry-gallery-image {
-	margin: 0 23px;
-	margin-bottom: 30px;
-}

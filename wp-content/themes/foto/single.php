@@ -24,7 +24,7 @@ get_header(); ?>
 
 				<?php get_template_part( 'content', 'single' ); ?>
                     
-                <div id="comment-container" class="container"><?php comments_template( '', true ); ?></div>
+                <div id="comment-container"><?php comments_template( '', true ); ?></div>
 
 			</div><!-- #content -->
 	</div><!-- #main -->

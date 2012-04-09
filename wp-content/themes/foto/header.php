@@ -9,9 +9,14 @@
 <title><?php vidor_title()?></title>
 	
 <link rel="profile" href="http://gmpg.org/xfn/11" />
+
 <link href="<?php echo esc_url( home_url( '/' ) ); ?>/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/supersized.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/supersized.shutter.css" type="text/css" media="screen" />
+
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
 <!-- 1140px Grid styles for IE -->
 <!--[if lte IE 9]><link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style-ie.css" type="text/css" media="screen" /><![endif]-->
 
