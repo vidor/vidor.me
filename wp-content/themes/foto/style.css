@@ -213,19 +213,36 @@ header h2#site-description {
                                              =single post
 ***************************************************************************************************/
 .single .container {
-	max-width: 900px;
-	margin: 0 auto;
-	padding: 0 5px;
 }
 
+.single article #post-title {
+	max-width: 880px;
+	margin: 0 auto 20px auto;
+	text-align: center;
+	font-size: 24px;
+}
 
 .single .entry-content #entry-content-inner {
 	background: white;
 	padding: 10px;
+	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
+	margin: 0 auto 30px auto;
+	max-width: 880px;
+	
+	
 }
 
 .single article {
+
+}
+
+.single article .section {
+	padding-top: 10px;
+}
+
+.single article .section.fullscreen {
+	padding: 0;
 }
 
 
@@ -234,7 +251,29 @@ header h2#site-description {
 	cursor: pointer;
 	background: white;
 	border-bottom: 1px solid #ddd;
-	margin-bottom: 30px;
+}
+
+.single article  .entry-gallery-image.max-width {
+	margin: 0 auto 30px auto;
+	max-width: 900px;
+}
+
+.single article  .entry-gallery-image.fullscreen {
+	position: relative;
+	overflow: hidden;
+	border: 0;
+}
+
+.single article  .entry-gallery-image.fullscreen  .entry-gallery-image-title{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: url('images/white-trans.png');
+}
+
+.single article  .entry-gallery-image.fullscreen img {
+	position: absolute;
 }
 
 .single article  .entry-gallery-image img {
@@ -249,6 +288,91 @@ header h2#site-description {
 }
 
 .single article  .entry-gallery-image .entry-gallery-image-title p {
+}
+
+/**************************************************************************************************
+                                             =pagescroller
+***************************************************************************************************/
+#ps-control {
+	position: fixed;
+	width: 41px;
+	top: 48px;
+	bottom: 0;
+	right: 10px;
+	z-index: 1;
+}
+
+#ps-control  div {
+	background: url(images/nav.png) no-repeat;
+	position: absolute;
+	width: 41px;
+	height: 41px;
+	cursor: pointer;
+}
+
+#ps-control  div.prev {
+	top: 0px;
+	background-position: 0 -82px;
+}
+
+#ps-control  div.prev:hover {
+	background-position: -41px -82px;
+}
+
+#ps-control  div.next {
+	top: 51px;
+	background-position: 0 -41px;
+}
+
+#ps-control  div.next:hover {
+	background-position: -41px -41px;
+}
+
+#ps-control div.to-comment {
+	background-position: 0 bottom;
+	bottom: 48px;
+	color: #52BAE1;
+	text-align: center;
+	line-height: 35px;
+}
+
+#ps-control div.to-comment var {
+	font-style: normal;
+	font-size: 12px;
+}
+
+#ps-control div.to-comment:hover {
+	background-position: -41px bottom;
+	color: white;
+}
+
+#ps-control div.exit-fullscreen:hover {
+	background-position: -41px 0;
+}
+
+.pageScroll{
+	position: fixed !important;
+	top: 150px;
+	right: 10px;
+	z-index: 2;
+}
+
+.pageScroll li {
+	list-style-type: none;
+
+}
+
+.pageScroll li a {
+	cursor: pointer;
+	width: 41px;
+	height: 20px;
+	display: block;
+	background: url(images/nav.png) 0 -133px no-repeat;
+}
+
+.pageScroll li.active a,
+.pageScroll li a:hover {
+	background-position: -41px -133px;
 }
 
 /**************************************************************************************************
@@ -284,8 +408,15 @@ header h2#site-description {
 	#primary {width: 900px;}
 }
 
+@media all and (max-width: 1024px) {
+	.pageScroll, #ps-control {
+		display: none;
+	}
+}
+
 @media all and (max-width: 900px) and (min-width: 600px) {
 	#primary {width: 600px;}
+
 }
 
 @media all and (max-width: 600px) and (min-width: 300px) {
@@ -361,6 +492,8 @@ height: 100%;
 ***************************************************************************************************/
 #comment-container {
 	overflow: visible;
+	margin: 30px auto 0 auto;
+	max-width: 900px;
 }
 #ds-thread p.ds-powered-by {display: none;}
 #ds-thread .ds-comments-info {text-align: center;}

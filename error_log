@@ -28,3 +28,6 @@
 [19-Mar-2012 05:29:10] PHP Parse error:  syntax error, unexpected T_ENDIF in /home5/vidorme/public_html/dev/wp-content/themes/vidor/content-index.php on line 9
 [27-Mar-2012 05:19:51] PHP Fatal error:  Call to undefined function  twentyeleven_content_nav() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/author.php on line 39
 [28-Mar-2012 03:15:58] PHP Fatal error:  Call to undefined function  twentyeleven_content_nav() in /home5/vidorme/public_html/dev/wp-content/themes/vidor/category.php on line 29
+[13-Apr-2012 05:15:09] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home5/vidorme/public_html/dev/wp-content/themes/foto/content-single.php on line 29
+[13-Apr-2012 05:15:32] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home5/vidorme/public_html/dev/wp-content/themes/foto/content-single.php on line 29
+[13-Apr-2012 05:16:08] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home5/vidorme/public_html/dev/wp-content/themes/foto/content-single.php on line 29
