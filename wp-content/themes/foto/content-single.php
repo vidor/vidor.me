@@ -99,23 +99,28 @@
 			slide.width(wWidth);
 			slide.height(wHeight);
 			slide.find('img.big-size').each(function() {
-				var imgWidth = $(this).width();
-				var imgHeight = $(this).height();
-				var hOffset = vOffset = 0;
-				vOffset = -( imgHeight - wHeight ) / 2;
-				hOffset = -( imgWidth - wWidth ) / 2;
+				$(this).load(function() {
 				
-				if( vOffset > 0 ) {
-					$(this).height('100%'); $(this).width('auto');
-					vOffset = 0;
-				}
+					var imgWidth = $(this).width();
+					var imgHeight = $(this).height();
+					var hOffset = vOffset = 0;
+					vOffset = -( imgHeight - wHeight ) / 2;
+					hOffset = -( imgWidth - wWidth ) / 2;
 				
-				if( hOffset > 0 ) {
-					$(this).width('100%'); $(this).height('auto');
-					hOffset = 0;
-				}		
+					if( vOffset > 0 ) {
+						$(this).height('100%'); $(this).width('auto');
+						vOffset = 0;
+					}
 				
-				$(this).css({top: vOffset, left: hOffset});
+					if( hOffset > 0 ) {
+						$(this).width('100%'); $(this).height('auto');
+						hOffset = 0;
+					}		
+				
+					$(this).css({top: vOffset, left: hOffset});
+				
+					});
+
 			});
 
 		}

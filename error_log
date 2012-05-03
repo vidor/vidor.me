@@ -31,3 +31,5 @@
 [13-Apr-2012 05:15:09] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home5/vidorme/public_html/dev/wp-content/themes/foto/content-single.php on line 29
 [13-Apr-2012 05:15:32] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home5/vidorme/public_html/dev/wp-content/themes/foto/content-single.php on line 29
 [13-Apr-2012 05:16:08] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home5/vidorme/public_html/dev/wp-content/themes/foto/content-single.php on line 29
+[17-Apr-2012 11:31:34] PHP Fatal error:  Call to undefined function  twentyeleven_content_nav() in /home5/vidorme/public_html/dev/wp-content/themes/foto/author.php on line 39
+[18-Apr-2012 11:15:48] PHP Fatal error:  Call to undefined function  twentyeleven_content_nav() in /home5/vidorme/public_html/dev/wp-content/themes/foto/category.php on line 29

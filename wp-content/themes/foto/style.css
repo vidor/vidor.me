@@ -284,7 +284,12 @@ header h2#site-description {
 
 .single article .entry-gallery-image .entry-gallery-image-title {
 	padding: 10px;
+	
+}
 
+.single article .entry-gallery-image.fullscreen .entry-gallery-image-title {
+	background: url(images/transparent.png);
+	color: white;
 }
 
 .single article  .entry-gallery-image .entry-gallery-image-title p {
